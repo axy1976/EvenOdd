@@ -12,21 +12,26 @@ class VCEvenOdd: UIViewController {
     
     private let txt:UITextField = {
         let text = UITextField()
-        text.backgroundColor = .placeholderText
+        text.textColor = .white
+        text.backgroundColor = .systemTeal
         text.textAlignment = .center
-        text.placeholder = "enter number"
         text.layer.cornerRadius = 6
+        text.attributedPlaceholder = NSAttributedString(string: "enter number", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        text.addTarget(self, action: #selector(textatfocus), for: .touchDown)
         return text
     }()
     private let btn:UIButton = {
         let button = UIButton()
         button.setTitle("Check Number !", for: .normal)
-        button.backgroundColor = .black
+        button.backgroundColor = .orange
         button.layer.cornerRadius = 6
         button.setTitleColor(.white, for: .normal)
         button.addTarget(self, action: #selector(checknum), for: .touchUpInside)
         return button
     }()
+    @objc private func textatfocus() {
+        txt.placeholder = ""
+    }
     @objc private func checknum() {
         var result:String = ""
         let alert = UIAlertController(title: "oops!", message: "Wrong input. Please input numbers only !", preferredStyle: .alert)
@@ -55,6 +60,7 @@ class VCEvenOdd: UIViewController {
         if result.isEmpty==false {
             let vc = VCResult()
             vc.result = result
+            vc.title = "Number is ..."
             navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -66,7 +72,7 @@ class VCEvenOdd: UIViewController {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        txt.frame = CGRect(x: 20, y: (view.height/2)-30, width: (view.width-40), height: 40)
-        btn.frame = CGRect(x: 20, y: (view.height/2)+30, width: (view.width-40), height: 40)
+        txt.frame = CGRect(x: 20, y: (view.height/2)-50, width: (view.width-40), height: 40)
+        btn.frame = CGRect(x: 20, y: (view.height/2)+5, width: (view.width-40), height: 40)
     }
 }

@@ -16,7 +16,7 @@ class VCResult: UIViewController {
         let label = UILabel()
         label.text = ""
         label.textAlignment = .center
-        label.adjustsFontSizeToFitWidth = true
+        label.font = .boldSystemFont(ofSize: 46)
         return label
     }()
     override func viewDidLoad() {
@@ -27,6 +27,6 @@ class VCResult: UIViewController {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        lbl.frame = CGRect(x: 20, y: (view.height/2)-10, width: view.width-40, height: 20)
+        lbl.frame = CGRect(x: 20, y: (view.height/2)-25, width: view.width-40, height: 50)
     }
 }

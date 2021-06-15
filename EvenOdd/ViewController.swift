@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     }()
     @objc private func goconsole() {
         let vc = VCEvenOdd()
+        vc.title = "Check Number"
         navigationController?.pushViewController(vc, animated: true)
     }
     override func viewDidLoad() {
